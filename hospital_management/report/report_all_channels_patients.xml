@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="action_patient_id_detail" model="ir.actions.act_window">
+       <field name="name">Medical Report</field>
+        <field name="view_mode">pivot</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appoinment</field>
+    </record>
+
+    <menuitem id="hospital_patient_report"
+              name="Hospital Report"
+              parent="hospital_root"
+              sequence="10"/>
+
+    <menuitem id="hospital_patient_report_details"
+              name="Patient Report"
+              parent="hospital_patient_report"
+              action="action_view_hospital_report"
+              sequence="10"/>
+</odoo>
