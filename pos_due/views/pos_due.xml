@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record model="ir.ui.view" id="credit_limit_form_view">
+              <field name="name">product.limit</field>
+              <field name="model">res.partner</field>
+              <field name="inherit_id" ref="base.view_partner_form"/>
+              <field name="arch" type="xml">
+                    <xpath expr="//field[@name='barcode']" position="after">
+                        <div class="o_horizontal_separator">Credit Limit </div>
+                        <field name="due_limit" string="Blocking Amount"/>
+                    </xpath>
+              </field>
+
+    </record>
+</odoo>
