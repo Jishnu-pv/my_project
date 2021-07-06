@@ -1,0 +1,23 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_review" inherit_id="website_sale.products_item"
+              name="product hsn">
+        <xpath expr="//*[hasclass('carousel-item h-100 active')]" position="after">
+<!--        <xpath expr="//a[@id='o-carousel-product']" position="after">-->
+            <hr/>
+            <br/>
+            <p>Review:
+                <textarea id="review" name="review" rows="4" cols="50"  >
+                </textarea>
+            </p>
+            <hr/>
+            <p>Rating:
+                <input type="submit" id="rating" name="rating"/>
+                <button name="getdata" string="check"/>
+
+            </p>
+
+        </xpath>
+    </template>
+</odoo>
