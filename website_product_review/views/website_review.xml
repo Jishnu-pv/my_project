@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <template id="product_review" inherit_id="website_sale.product"
+                  name="product review">
+            <xpath expr="//div[@id='product_details']" position="inside">
+                <div>
+                    <hr/>
+                    <br/>
+                    <form role="form" action="/create/data" method="POST">
+                        <p>
+                            Review:
+                            <textarea id="review" name="review" rows="4"
+                                      cols="50"
+                                      placeholder="Enter a Message..."
+                                      t-att-value="review"/>
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+
+                            <input type="hidden" name="product_id"
+                                   t-att-value="product.id"/>
+
+
+                        </p>
+                        <p>
+                            Rating:
+<!--                            <input type="text" id="rating" name="rating"-->
+<!--                                   t-att-value="rating"/>-->
+                            <select name="ratings" id="ratings">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+
+                        </p>
+                        <!--                <a class="o_carousel_product_img_link" t-att-href="product.website_url">send</a>-->
+                        <button type="submit"
+                                class="o_portal_chatter_composer_btn btn btn-primary">
+                            send
+                        </button>
+                        <br/>
+                        <hr/>
+                        <div>
+                            <t t-set="datas"
+                               t-value="request.env['web.details'].sudo().search([('product_id', '=', product.id )])"></t>
+                            <t t-foreach="datas" t-as="data">
+                                <br/>
+                                <span t-field="data.cust"/>
+                                <br/>
+                                <span>Published on:</span>
+                                <span t-field="data.date"/>
+                                <br/>
+                                <span>Rating</span>
+                                <span t-field="data.ratings"/>
+                                <br/>
+                                <span t-field="data.review"/>
+                                <br/>
+                                <hr/>
+<!--                                 <span t-field="product.sales_count"/>-->
+                            </t>
+                        </div>
+                    </form>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,137 @@
+<odoo>
+    <template id="snippet_testimonial" name="Features">
+        <section class="snippet_testimonial">
+            <div class="container">
+
+                <div class="row">
+                    <h3 class="text-center mb32">Most Sold Products</h3>
+
+                </div>
+                <div>
+                    <div class="row o_wsale_products_main_row">
+
+
+                        <!--                           <a t-att-href="keep('/shop' + slug(c), category=0)">-->
+
+
+                        <t t-set="datas"
+                           t-value="request.env['product.template'].sudo().search([], order='sales_count desc', limit=4)"></t>
+
+                        <table class="table table-borderless m-0" data-ppg="20"
+                               data-ppr="4">
+
+                            <tr>
+                                <td t-foreach="datas" t-as="data"
+                                    class="oe_product">
+                                    <!--                                    <a t-att-href="keep('/shop/' + slug(datas.name))">-->
+                                    <a href="shop/new-one-38">
+                                        <img src="/web/image/product.template/38/image_256/new%20one?unique=ec9e7fa"
+                                             class="img img-fluid"
+                                             alt="new one"
+                                             loading="lazy"/>
+                                        <h5 class="card-header">
+                                            <center>
+                                                <span t-field="data.name"/>
+                                            <br/>
+                                                <span class="oe_currency_value"
+                                                      t-field="data.list_price"/>
+                                            </center>
+                                        </h5>
+
+                                    </a>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-center mb32">Most Viwed Products</h3>
+                </div>
+
+                <div class="row o_wsale_products_main_row">
+
+                    <t t-set="datas"
+                       t-value="request.env['product.product'].sudo().search([], order='most_viwed desc', limit=4)"></t>
+                    <table class="table table-borderless m-0" data-ppg="20"
+                           data-ppr="4">
+                        <tr>
+                            <td t-foreach="datas" t-as="data"
+                                class="oe_product">
+                                <a href="/shop">
+                                    <img src="/web/image/product.template/38/image_256/new%20one?unique=ec9e7fa"
+                                         class="img img-fluid"
+                                         alt="new one"
+                                         loading="lazy"/>
+                                    <h5 class="card-header">
+                                        <center><span t-field="data.name"/>
+                                            <br/>
+                                            <span t-field="data.list_price"/></center>
+                                    </h5>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
+
+            <!--                <div class="row o_wsale_products_main_row">-->
+
+
+            <!--                           <a t-att-href="keep('/shop' + slug(c), category=0)">-->
+
+
+            <!--                    <t t-set="datas"-->
+            <!--                       t-value="request.env['website.track'].search([])"></t>-->
+            <!--                    <t t-foreach="datas" t-as="data" class="oe_product">-->
+
+
+            <!--                       <span t-field="data.product_id"/>-->
+
+
+            <!--                       class="oe_product">-->
+            <!--                        <table class="table table-borderless m-0" data-ppg="20"-->
+            <!--                               data-ppr="4">-->
+            <!--                            <tr>-->
+            <!--                                <td t-foreach="data.product_ids" t-as="id">-->
+            <!--                                    <img src="/web/image/product.template/38/image_256/new%20one?unique=ec9e7fa"-->
+            <!--                                             class="img img-fluid"-->
+            <!--                                             alt="new one"-->
+            <!--                                             loading="lazy"/>-->
+            <!--                                     <h5 class="card-header">-->
+            <!--                                    <span t-field="id.name"/>-->
+            <!--                                     <br/>-->
+            <!--                                    <span class="oe_currency_value"-->
+            <!--                                          t-field="id.list_price"/>-->
+            <!--                                     </h5>-->
+            <!--                                </td>-->
+            <!--                            </tr>-->
+            <!--                        </table>-->
+            <!--                    </t>-->
+
+
+            <!--                </div>-->
+            <!--            </div>-->
+        </section>
+    </template>
+
+    <template id="you_snippet_id" inherit_id="website.snippets"
+              name="new snippets">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']"
+               position="inside">
+            <t t-snippet="website_most_sold.snippet_testimonial"
+               t-thumbnail="/snippet/static/img/logo.png"/>
+        </xpath>
+    </template>
+</odoo>
+
+
